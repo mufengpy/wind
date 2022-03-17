@@ -10,6 +10,13 @@ def index():
     response = tem.render(info={'webserver': 'mfserver', 'other_server': ['django', 'flask']})
     return response.encode('utf-8')
 
+def index():
+    with open('templates/index.html', 'r') as f:
+        data = f.read()
+
+    tem = Template(data)
+    response = tem.render(info={'webserver': 'mfserver', 'other_server': ['django', 'flask']})
+    return response.encode('utf-8')
 
 def objs_to_dicts(objs):
     '''把对象列表转换为字典列表'''
@@ -45,5 +52,5 @@ def user():
     return response.encode('utf-8')
 
 
-def error():
-    return '<h1>404 NOT FOUND<h1>'.encode('utf-8')
+# def error():
+#     return '<h1>404 NOT FOUND<h1>'.encode('utf-8')

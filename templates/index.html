@@ -1,6 +1,20 @@
+{#{% from 'index.jinja2' import input %}#}
+
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+    {% macro static_file(type, filename_or_url) %}
+        {% if type == 'css' %}
+            <link rel="stylesheet" href="css/{{ filename_or_url }}" type="text/css">
+        {% elif type == 'js' %}
+            <script type="text/css" src="static/{{ filename_or_url }}"></script>
+        {% elif type=='icon' %}
+            <link rel='icon' href='static/{{ filename_or_url }}'>
+        {% endif %}
+    {% endmacro %}
+
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
@@ -11,11 +25,16 @@
             font-weight:bold;
         }
     </style>
+    {{ static_file('css', 'index.css') }}
+
 </head>
 <body>
-<span class="bg">welcome to {{info.webserver}}! <br>
+
+
+<span class="color">welcome to {{info.webserver}}! <br>
     this is not {{info.other_server.0}}/{{info.other_server.1}}...
 </span>
+
 
 </body>
 </html>

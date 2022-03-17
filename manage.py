@@ -23,8 +23,8 @@ def app(env, response):
             break
     if func:
         response = func()
-    else:
-        response = views.error()
+    # else:
+    #     response = views.error()
 
     return [response]
 
