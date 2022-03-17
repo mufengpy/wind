@@ -9,7 +9,7 @@ def app(environ, start_response):
     status = '200 OK'
     headers = [('Content-Type', 'text/html')]
     start_response(status, headers)
-    return [b'<h1>Hello, web!</h1>']
+    return ['<h1>Hello, web!</h1>'.encode('utf-8')]
 
 
 if __name__ == '__main__':
