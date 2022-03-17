@@ -5,8 +5,8 @@ from app01 import views
 
 
 # 函数对http请求与响应的封装、使得Python专注与HTML
-# environ http 请求 (dist)
-# start_response 响应 (function)
+# env http 请求 (dist)
+# response 响应 (function)
 def app(env, response):
     status = '200 OK'
     headers = [('Content-Type', 'text/html')]
