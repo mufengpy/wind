@@ -1,3 +1,6 @@
+# coding:utf-8
+__author__ = 'mfserver'
+
 from wsgiref.simple_server import make_server
 import settings
 from app01.urls import urls
