@@ -1,11 +1,13 @@
-# def index():
-#     return '<h1>Welcome to mfserver<h1>'.encode('utf-8')
+from jinja2 import Template
 
 
 def index():
-    with open('templates/index.html', 'rb') as f:
+    with open('templates/index.html', 'r') as f:
         data = f.read()
-    return data
+
+    tem = Template(data)
+    response = tem.render(info={'webserver': 'mfserver', 'other_server': ['django', 'flask']})
+    return response.encode('utf-8')
 
 
 def error():
