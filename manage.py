@@ -1,18 +1,7 @@
 from wsgiref.simple_server import make_server
 import settings
-
-
-def index():
-    return '<h1>Welcome to mfserver<h1>'.encode('utf-8')
-
-
-def error():
-    return '<h1>404 NOT FOUND<h1>'.encode('utf-8')
-
-
-urls = [
-    ('/', index),
-]
+from app01.urls import urls
+from app01 import views
 
 
 # 函数对http请求与响应的封装、使得Python专注与HTML
@@ -32,7 +21,7 @@ def app(env, response):
     if func:
         response = func()
     else:
-        response = error()
+        response = views.error()
 
     return [response]
 
