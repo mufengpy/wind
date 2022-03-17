@@ -2,6 +2,8 @@
 __author__ = 'mfserver'
 
 from wsgiref.simple_server import make_server
+from whitenoise import WhiteNoise
+
 import settings
 from app01.urls import urls
 from app01 import views
@@ -21,15 +23,17 @@ def app(env, response):
         if url[0] == path:
             func = url[1]
             break
+
     if func:
         response = func()
-    # else:
-    #     response = views.error()
+    else:
+        response = views.error()
 
     return [response]
 
 
 if __name__ == '__main__':
-    httpd = make_server('', settings.port, app)
+    whitenoise = WhiteNoise(app, root='static')
+    httpd = make_server('', settings.port, whitenoise)
     print(settings.info_terminal)
     httpd.serve_forever()
